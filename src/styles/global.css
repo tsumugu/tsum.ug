@@ -1,11 +1,12 @@
-html {
-  background-color: #f1f5f9;
+html, body {
+  color: #D1D2D3;
+  background-color: #1B1D21;
   font-family: M PLUS\ 1p,sans-serif;
-}
-
-body {
   margin: 0;
   padding: 0;
   width: 100%;
   line-height: 1.5;
+}
+main {
+  margin: 5rem;
 }

@@ -1,0 +1,9 @@
+---
+import "../styles/components/iconcard.css"
+const {href, text, emoji, description} = Astro.props;
+---
+<div class="iconcard">
+  <a href={href} target="_blank"><p class="emoji">{emoji}</p></a>
+  <p class="title">{text}</p>
+  <p class="text">{description}</p>
+</div>

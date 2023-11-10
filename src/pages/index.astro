@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css"
+import IconCard from "../components/IconCard.astro"
 ---
 
 <html lang="ja">
@@ -11,47 +12,51 @@ import '../styles/global.css';
 		<title>tsum.ug</title>
 		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
 		<style>
-			#top__name {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				font-size: 3rem;
+			.pageHeader {
+				text-align: center;
 			}
-			/*
-			#top__bgimg {
-				width: 100vw;
-				height: 100vh;
-				background-size: cover;
-				background-attachment: fixed;
+			.IconCardWrapper {
+				display: flex;
+				flex-wrap : wrap;
 			}
-			/* レスポンシブ */
-			/* 1. 画面の大きなPC */
-			@media (min-width: 1500px) {
-				#top__bgimg {
-					background-image: url("https://tsumugu.s3-ap-northeast-1.amazonaws.com/TOPPC.jpg");
-					background-position: center top;
-				}
-			}
-			/* 2. PC */
-			@media (max-width: 1500px) and (min-width: 600px) {
-				#top__bgimg {
-					background-image: url("https://tsumugu.s3-ap-northeast-1.amazonaws.com/TOPPC.jpg");
-					background-position: center top;
-				}
-			}
-			/* 3. スマホなど */
-			@media screen and (max-width:600px) {
-				#top__bgimg {
-					background-image: url("https://tsumugu.s3-ap-northeast-1.amazonaws.com/TOPSP.jpg");
-					background-position: center center
-				}
-			}
-			*/
 		</style>
 	</head>
 	<body>
-		<div id="top__bgimg"></div>
-		<h1 id="top__name">tsum.ug</h1>
+		<main>
+			<section class="pageHeader">
+				<h1>Tsumugu</h1>
+				<p>ものづくりを嗜んでいる。情報デザインを勉強中。</p>
+			</section>
+			<section>
+				<h2>Favorite</h2>
+				<div class="IconCardWrapper">
+					<IconCard href="https://photos.app.goo.gl/5UwNQpwia8HHuQdz7" text="猫" emoji="🐱" description="吸って体力倍増" />
+					<IconCard href="https://www.inoriminase.com/" text="水瀬いのり" emoji="🍀" description="透き通る歌声" />
+					<IconCard href="https://gochiusa.com/" text="ごちうさ" emoji="🐰" description="きらら好き" />
+					<IconCard href="https://www.lovelive-anime.jp/" text="ラブライブ" emoji="👩‍🎤" description="人生のバイブル" />
+					<IconCard href="https://www.yamaha-motor.co.jp/" text="バイク" emoji="🏍" description="オフ車が好き" />
+				</div>
+			</section>
+			<section>
+				<h2>SNS</h2>
+				<div class="IconCardWrapper">
+					<IconCard href="https://twitter.com/tsumugu1515" text="Twitter" emoji="🐓" description="メイン" />
+					<IconCard href="https://www.instagram.com/tsumugu.yamaguchi/" text="Instagram" emoji="📷" description="写真など" />
+					<IconCard href="https://www.facebook.com/tsumugu.yamaguchi/" text="Facebook" emoji="📕" description="あまり使わない" />
+					<IconCard href="https://github.com/tsumugu" text="GitHub" emoji="💻" description="色々上げてる" />
+					<IconCard href="https://qiita.com/tsumugu" text="Qiita" emoji="🟩" description="低浮上" />
+					<IconCard href="https://zenn.dev/tsumugu" text="Zenn" emoji="🕍" description="低浮上" />
+					<IconCard href="https://dev.to/tsumugu" text="dev.to" emoji="🔧" description="使ってない" />
+					<IconCard href="http://www.nicovideo.jp/user/47747351" text="ニコ動" emoji="📹" description="昔投稿してた" />
+					<IconCard href="https://www.youtube.com/channel/UC0PuWc8GyBpepfjysWkXukQ/videos" text="YouTube" emoji="🟥" description="見る専" />
+				</div>
+			</section>
+			<!--
+			<section>
+				<h2>Works</h2>
+				<p>カードで横スクロール</p>
+			</section>
+			-->
+		</main>
 	</body>
 </html>

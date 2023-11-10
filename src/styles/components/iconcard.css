@@ -1,0 +1,32 @@
+a {
+  text-decoration: none;
+}
+.iconcard {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.emoji {
+  margin: 0;
+  margin-bottom: 4px;
+  padding: 0;
+  font-size: 4rem;
+  width: 8rem;
+  height: 8rem;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #D1D2D3;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title, .text {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.title {
+  width: 8rem;
+}
+.text {
+  width: 8rem;
+}
