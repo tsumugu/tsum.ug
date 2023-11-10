@@ -1,0 +1,43 @@
+
+---
+import '../styles/global.css';
+import SideNavigation from '../components/SideNav.astro';
+import LinkCardWrapper from '../components/LinkCardWrapper.astro';
+import LinkCard from '../components/LinkCard.astro';
+---
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>tsum.ug</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<SideNavigation>
+		  <div class="wrapper">
+        <h2 class="subtitle">SNS</h2>
+        <LinkCardWrapper>
+          <LinkCard  linkColorClass="links twitter" webPImgPath="index_thumb/twitter.webp" pngImgPath="index_thumb/twitter.png" linkName="Twitter" linkUrl="https://twitter.com/tsumugutech?lang=ja" />
+          <LinkCard  linkColorClass="links twitter" webPImgPath="index_thumb/twitter1515.webp" pngImgPath="index_thumb/twitter1515.png" linkName="Twitter(趣味アカウント)" linkUrl="https://twitter.com/tsumugu1515?lang=ja" />
+          <LinkCard  linkColorClass="links instagram" webPImgPath="index_thumb/instagram.webp" pngImgPath="index_thumb/instagram.png" linkName="Instagram" linkUrl="https://www.instagram.com/tsumugu.yamaguchi/" />
+          <LinkCard  linkColorClass="links facebook" webPImgPath="index_thumb/facebook.webp" pngImgPath="index_thumb/facebook.png" linkName="Facebook" linkUrl="https://www.facebook.com/tsumugu.yamaguchi/" />
+        </LinkCardWrapper>
+        <h2 class="subtitle">技術関係</h2>
+        <LinkCardWrapper>
+          <LinkCard  linkColorClass="links normal" webPImgPath="index_thumb/github.webp" pngImgPath="index_thumb/github.png" linkName="GitHub" linkUrl="https://github.com/tsumugu" />
+          <LinkCard  linkColorClass="links qiita" webPImgPath="index_thumb/qiita.webp" pngImgPath="index_thumb/qiita.png" linkName="Qiita" linkUrl="http://qiita.com/tsumugu" />
+          <LinkCard  linkColorClass="links normal" webPImgPath="index_thumb/zenn.webp" pngImgPath="index_thumb/zenn.png" linkName="Zenn" linkUrl="https://zenn.dev/tsumugu" />
+          <LinkCard  linkColorClass="links normal" webPImgPath="index_thumb/devto.webp" pngImgPath="index_thumb/devto.png" linkName="dev.to" linkUrl="https://dev.to/tsumugu" />
+        </LinkCardWrapper>
+        <h2 class="subtitle">動画共有サイト</h2>
+        <LinkCardWrapper>
+          <LinkCard  linkColorClass="links normal" webPImgPath="index_thumb/nico.webp" pngImgPath="index_thumb/nico.png" linkName="ニコニコ動画" linkUrl="http://www.nicovideo.jp/user/47747351" />
+          <LinkCard  linkColorClass="links youtube" webPImgPath="index_thumb/youtube.webp" pngImgPath="index_thumb/youtube.png" linkName="YouTube" linkUrl="https://www.youtube.com/channel/UC0PuWc8GyBpepfjysWkXukQ/videos" />
+        </LinkCardWrapper>
+      </div>
+    </SideNavigation>
+	</body>
+</html>

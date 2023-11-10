@@ -1,5 +1,6 @@
 ---
-
+import '../styles/global.css';
+import SideNavigation from '../components/SideNav.astro';
 ---
 
 <html lang="ja">
@@ -8,15 +9,13 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>tsum.ug</title>
+		<title>tsum.ug | Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<a href="/">Home</a>
-    <a href="/profile/">Profile</a>
-    <a href="/works/">Works</a>
-    <h1>About Me</h1>
-    <h2>... and my new Astro site!</h2>
-    <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-    <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+		<SideNavigation>
+      <h1>プロフィール</h1>
+      <p>猫とプログラミングが好き</p>
+    </SideNavigation>
   </body>
 </html>

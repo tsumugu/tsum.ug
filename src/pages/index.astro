@@ -1,5 +1,5 @@
 ---
-
+import '../styles/global.css';
 ---
 
 <html lang="ja">
@@ -9,11 +9,49 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>tsum.ug</title>
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
+		<style>
+			#top__name {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 3rem;
+			}
+			/*
+			#top__bgimg {
+				width: 100vw;
+				height: 100vh;
+				background-size: cover;
+				background-attachment: fixed;
+			}
+			/* レスポンシブ */
+			/* 1. 画面の大きなPC */
+			@media (min-width: 1500px) {
+				#top__bgimg {
+					background-image: url("https://tsumugu.s3-ap-northeast-1.amazonaws.com/TOPPC.jpg");
+					background-position: center top;
+				}
+			}
+			/* 2. PC */
+			@media (max-width: 1500px) and (min-width: 600px) {
+				#top__bgimg {
+					background-image: url("https://tsumugu.s3-ap-northeast-1.amazonaws.com/TOPPC.jpg");
+					background-position: center top;
+				}
+			}
+			/* 3. スマホなど */
+			@media screen and (max-width:600px) {
+				#top__bgimg {
+					background-image: url("https://tsumugu.s3-ap-northeast-1.amazonaws.com/TOPSP.jpg");
+					background-position: center center
+				}
+			}
+			*/
+		</style>
 	</head>
 	<body>
-		<a href="/">Home</a>
-    <a href="/profile/">Profile</a>
-    <a href="/works/">Works</a>
-		<h1>Tsumugu</h1>
+		<div id="top__bgimg"></div>
+		<h1 id="top__name">tsum.ug</h1>
 	</body>
 </html>

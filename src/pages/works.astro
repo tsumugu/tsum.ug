@@ -1,5 +1,6 @@
 ---
-
+import '../styles/global.css';
+import SideNavigation from '../components/SideNav.astro';
 ---
 
 <html lang="ja">
@@ -9,17 +10,17 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>tsum.ug</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<a href="/">Home</a>
-    <a href="/profile/">Profile</a>
-    <a href="/works/">Works</a>
-    <h1>My Astro Learning Blog</h1>
-    <p>This is where I will post about my journey learning Astro.</p>
-    <ul>
-      <li><a href="/works/work-1/">Work 1</a></li>
-      <li><a href="/works/work-2/">Work 2</a></li>
-      <li><a href="/works/work-3/">Work 3</a></li>
-    </ul>
+		<SideNavigation>
+      <h1>作品</h1>
+      <p><a href="https://tsumugu.tech/works">ポートフォリオサイト</a>から引っ越し準備中</p>
+      <ul>
+        <li><a href="/works/work-1/">Work 1</a></li>
+        <li><a href="/works/work-2/">Work 2</a></li>
+        <li><a href="/works/work-3/">Work 3</a></li>
+      </ul>
+    </SideNavigation>
   </body>
 </html>

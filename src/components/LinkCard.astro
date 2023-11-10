@@ -1,0 +1,14 @@
+---
+const {linkColorClass, webPImgPath, pngImgPath, linkName, linkUrl} = Astro.props;
+---
+<div class={linkColorClass} data-sr-id="0" style="visibility: visible; opacity: 1; transition: opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 0s;">
+  <a href={linkUrl}>
+    <div class="thumb_img">
+      <picture>
+        <source type="image/webp" srcset={webPImgPath}>
+        <img src={pngImgPath} alt="サムネイル">
+      </picture>
+    </div>
+    <div class="link_name">{linkName}</div>
+  </a>
+</div>
