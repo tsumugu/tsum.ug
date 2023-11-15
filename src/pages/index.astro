@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css"
+import "../styles/_global.scss"
 import IconCard from "../components/IconCard.astro"
 ---
 
@@ -11,19 +11,22 @@ import IconCard from "../components/IconCard.astro"
 		<meta name="generator" content={Astro.generator} />
 		<title>tsum.ug</title>
 		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
-		<style>
-			 /* main {
-				display: flex;
-				flex-flow: column;
-				justify-content: center;
-				align-items: center;
-			} */
+		<style type="scss">
 			.pageHeader {
 				text-align: center;
 			}
 			.IconCardWrapper {
 				display: flex;
 				flex-wrap : wrap;
+			}
+			/* sp, tablet */
+			@media (max-width: 900px) {
+				main, section, .IconCardWrapper {
+					display: flex;
+					flex-flow: column;
+					justify-content: center;
+					align-items: center;
+				}
 			}
 		</style>
 	</head>
