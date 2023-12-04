@@ -19,6 +19,10 @@ a {
   justify-content: center;
   align-items: center;
 }
+.emoji > img {
+  width: 4.5rem;
+  height: 4.5rem;
+}
 .title, .text {
   margin: 0;
   padding: 0;
