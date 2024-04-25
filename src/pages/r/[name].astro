@@ -1,0 +1,26 @@
+---
+export const redirect_dic = {
+  't': 'https://x.com/tsumugu1515',
+  'i': 'https://instagram.com/yamaguchi.tsumugu',
+  'f': 'https://facebook.com/yamaguchi.tsumugu'
+};
+
+export const getStaticPaths = () => {
+  return Object.keys(redirect_dic).map(k=>{return {params: {name: k}}});
+}
+
+const { name } = Astro.params;
+// redirect_dicで定義されているパラメータ以外は404になるのでこれで問題ない
+return Astro.redirect(redirect_dic[name]);
+---
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>tsum.ug</title>
+	</head>
+	<body></body>
+</html>
