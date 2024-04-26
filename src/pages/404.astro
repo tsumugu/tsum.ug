@@ -12,18 +12,57 @@ import "../styles/_global.scss"
 		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
     <style type="scss">
       main {
+        position: relative;
         text-align: center;
       }
       h1, h2 {
         margin: 1rem;
         padding: 0;
       }
+      /* thx: https://codepen.io/svdn/pen/qywmzp */
+      @keyframes cat_walking_animation {
+        0% {
+          left: 0;
+          transform: rotateY(180deg);
+        }
+        49% {
+          transform: rotateY(180deg);
+        }
+        50%{
+          left: 60%;
+          transform: rotateY(0deg);
+        }
+        99%{
+          transform: rotateY(0deg);
+        }
+        100% {
+          left: 0;
+          transform: rotateY(180deg);
+        }
+      }
+      #catcage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        #walkingcat {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 40%;
+          animation: cat_walking_animation 8s linear infinite;
+        }
+      }
     </style>
   </head>
 	<body>
+    <div  id="catcage">
+      <img id="walkingcat" src="public/walkingcat.gif">
+    </div>
 		<main>
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
 		</main>
 	</body>
 </html>
