@@ -65,6 +65,26 @@ import "../styles/_global.scss"
           animation: cat_walking_animation 16s linear infinite;
         }
       }
+      /* sp, tablet */
+			@media (max-width: 900px) {
+				main {
+					margin: 0;
+				}
+        h1, h2 {
+          width: 100vw;
+          text-align: center;
+        }
+        .CatCage {
+          text-align: center;
+        }
+        .WalkingCat {
+          transform: rotateY(180deg);
+          animation: none !important;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+			}
     </style>
   </head>
 	<body>
