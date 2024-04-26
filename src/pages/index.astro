@@ -20,6 +20,9 @@ import IconCard from "../components/IconCard.astro"
 				flex-wrap : wrap;
 				gap: 1rem;
 			}
+			.MusicPlayer {
+				max-width: 1100px !important;
+			}
 			/* sp, tablet */
 			@media (max-width: 900px) {
 				main, section, .IconCardWrapper {
@@ -67,6 +70,10 @@ import IconCard from "../components/IconCard.astro"
 					<IconCard href="http://www.nicovideo.jp/user/47747351" text="niconico" icon="brands/niconico.png" description="昔投稿してた" />
 					<IconCard href="https://www.youtube.com/channel/UC0PuWc8GyBpepfjysWkXukQ/videos" text="YouTube" icon="brands/youtube.png" description="見る専" />
 				</div>
+			</section>
+			<section>
+				<h2>Music</h2>
+				<iframe class="MusicPlayer" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/tsum-ug/pl.u-8DY9CoxyyXm0"></iframe>
 			</section>
 		</main>
 	</body>
