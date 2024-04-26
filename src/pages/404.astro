@@ -9,7 +9,9 @@ import "../styles/_global.scss"
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>tsum.ug - Page Not Found</title>
-		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&amp;display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+3D&display=swap" rel="stylesheet">
     <style type="scss">
       main {
         position: relative;
@@ -18,6 +20,15 @@ import "../styles/_global.scss"
       h1, h2 {
         margin: 1rem;
         padding: 0;
+        font-family: "Rock 3D", system-ui;
+        font-weight: 400;
+        font-style: normal;
+      }
+      h1 {
+        font-size: 8rem;
+      }
+      h2 {
+        font-size: 2rem;
       }
       /* thx: https://codepen.io/svdn/pen/qywmzp */
       @keyframes cat_walking_animation {
@@ -29,7 +40,7 @@ import "../styles/_global.scss"
           transform: rotateY(180deg);
         }
         50%{
-          left: 60%;
+          left: calc(100% - 25rem);
           transform: rotateY(0deg);
         }
         99%{
@@ -50,7 +61,7 @@ import "../styles/_global.scss"
           position: absolute;
           bottom: 0;
           left: 0;
-          width: 40%;
+          width: 25rem;
           animation: cat_walking_animation 8s linear infinite;
         }
       }
