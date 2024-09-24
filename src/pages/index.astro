@@ -15,6 +15,17 @@ import IconCard from "../components/IconCard.astro"
 			.pageHeader {
 				text-align: center;
 			}
+			.NameCardWrapper {
+				width: 100% !important;
+				display: flex;
+				flex-direction: row;
+				gap: 1rem;
+			}
+			.NameCardWrapper img {
+				width: 50%;
+				min-width: 250px;
+				max-width: 450px;
+			}
 			.IconCardWrapper {
 				display: flex;
 				flex-wrap : wrap;
@@ -25,7 +36,7 @@ import IconCard from "../components/IconCard.astro"
 			}
 			/* sp, tablet */
 			@media (max-width: 900px) {
-				main, section, .IconCardWrapper {
+				main, section, .IconCardWrapper, .NameCardWrapper {
 					display: flex;
 					flex-flow: column;
 					justify-content: center;
@@ -41,10 +52,17 @@ import IconCard from "../components/IconCard.astro"
 				<p>ものづくりを嗜んでいる学生</p>
 			</section>
 			<section>
+				<h2>About Me</h2>
+				<div class="NameCardWrapper">
+					<img src="namecard/meishi_tsumugu1515_omote.png">
+					<img src="namecard/meishi_tsumugu1515_ura.png">
+				</div>
+			</section>
+			<section>
 				<h2>Portfolio</h2>
 				<div class="IconCardWrapper">
 					<IconCard href="https://student.redesigner.jp/students/306a6993e150e5050ea9a22a9a629935" text="ポートフォリオ" icon="brands/redesigner.svg" description="PDF" />
-					<IconCard href="https://tsumugu.tech/" text="ポートフォリオ" icon="brands/tsumugutech.png" description="Webサイト" />
+					<IconCard href="https://tsumugu.tech/" text="旧ポートフォリオ" icon="brands/tsumugutech.png" description="Webサイト" />
 				</div>
 			</section>
 			<section>
