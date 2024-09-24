@@ -1,9 +1,6 @@
 a {
   text-decoration: none;
 }
-.iconcard {
-  margin-bottom: 1.5rem;
-}
 .emoji {
   margin: 0;
   margin-bottom: 4px;
@@ -12,7 +9,7 @@ a {
   width: 8rem;
   height: 8rem;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px #D1D2D3;
+  box-shadow: 2px 2px 2px 2px #d1d2d3;
   border-radius: 2rem;
   display: flex;
   justify-content: center;
@@ -22,7 +19,8 @@ a {
   width: 4.5rem;
   height: 4.5rem;
 }
-.title, .text {
+.title,
+.text {
   margin: 0;
   padding: 0;
   text-align: center;
