@@ -317,11 +317,26 @@ import IconCard from "../components/IconCard.astro"
 			}
 			/* sp, tablet */
 			@media (max-width: 900px) {
-				main, section, .IconCardWrapper, .NameCardWrapper {
+				main, section, .IconCardWrapper, .NameCardWrapper, .AboutMeInner {
 					display: flex;
 					flex-flow: column;
 					justify-content: center;
 					align-items: center;
+				}
+				.AboutMeInner {
+					text-align: center;
+				}
+
+				.opening-inner-text.hello {
+					position: absolute;
+					top: calc(var(--margin-size) + 1rem);
+					left: calc(var(--margin-size) + 1rem);
+				}
+
+				.opening-inner-text.im {
+					position: absolute;
+					bottom: calc(var(--margin-size) + 1rem);
+					right: calc(var(--margin-size) + 1rem);
 				}
 			}
 		</style>
@@ -347,11 +362,7 @@ import IconCard from "../components/IconCard.astro"
 			</div>
 		</div>
 		<main>
-			<section class="pageHeader">
-				<h1>tsum.ug</h1>
-			</section>
 			<section>
-				<h2>About Me</h2>
 				<div class="AboutMeWrapper">
 					<div class="AboutMeInner"><p class="AboutMeIcon">🔧</p><p class="AboutMeText">電子工作すき</p></div>
 					<div class="AboutMeInner"><p class="AboutMeIcon">💻</p><p class="AboutMeText">プログラミングすき</p></div>
