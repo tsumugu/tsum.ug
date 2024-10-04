@@ -300,19 +300,9 @@ import IconCard from "../components/IconCard.astro"
 				flex-wrap : wrap;
 				gap: 2rem;
 			}
-			.AboutMeInner {
-				margin-bottom: 1rem;
-			}
-			.AboutMeIcon, .AboutMeText {
-				display: inline-block;
-				margin: 0;
-				padding: 0;
-				font-size: 1.5rem;
-			}
-			.AboutMeIcon {
-				padding-right: 1rem;
-			}
+
 			.MusicPlayer {
+				margin-top: 2rem;
 				max-width: 1100px !important;
 			}
 			/* sp, tablet */
@@ -323,20 +313,9 @@ import IconCard from "../components/IconCard.astro"
 					justify-content: center;
 					align-items: center;
 				}
-				.AboutMeInner {
-					text-align: center;
-				}
-
-				.opening-inner-text.hello {
-					position: absolute;
-					top: calc(var(--margin-size) + 1rem);
-					left: calc(var(--margin-size) + 1rem);
-				}
-
-				.opening-inner-text.im {
-					position: absolute;
-					bottom: calc(var(--margin-size) + 1rem);
-					right: calc(var(--margin-size) + 1rem);
+				
+				.MusicPlayer {
+					width: 100% !important;
 				}
 			}
 		</style>
@@ -363,12 +342,20 @@ import IconCard from "../components/IconCard.astro"
 		</div>
 		<main>
 			<section>
-				<div class="AboutMeWrapper">
-					<div class="AboutMeInner"><p class="AboutMeIcon">🔧</p><p class="AboutMeText">電子工作すき</p></div>
-					<div class="AboutMeInner"><p class="AboutMeIcon">💻</p><p class="AboutMeText">プログラミングすき</p></div>
-					<div class="AboutMeInner"><p class="AboutMeIcon">🐱</p><p class="AboutMeText">ねこすき</p></div>
-					<div class="AboutMeInner"><p class="AboutMeIcon">🎨</p><p class="AboutMeText">美大生</p></div>
+				<h2>Hobby</h2>
+				<div class="IconCardWrapper">
+					<IconCard href="https://fujifilm-x.com/ja-jp/" text="カメラ" emoji="📷" description="FUJIFILM X-S20" />
+					<IconCard href="https://www.yamaha-motor.co.jp/" text="バイク" emoji="🏍" description="WR250R" />
 				</div>
+			</section>
+			<section>
+				<h2>Favorite</h2>
+				<div class="IconCardWrapper">
+					<IconCard href="https://photos.app.goo.gl/5UwNQpwia8HHuQdz7" text="猫" emoji="🐱" description="吸って体力倍増" />
+					<IconCard href="https://gochiusa.com/" text="ごちうさ" emoji="🐰" description="きらら好き" />
+					<IconCard href="https://www.lovelive-anime.jp/" text="ラブライブ" icon="brands/lovelive.png" description="人生のバイブル" />
+				</div>
+				<iframe class="MusicPlayer" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/tsum-ug/pl.u-8DY9CoxyyXm0"></iframe>
 			</section>
 			<section>
 				<h2>Portfolio</h2>
@@ -391,25 +378,6 @@ import IconCard from "../components/IconCard.astro"
 					<IconCard href="https://www.youtube.com/channel/UC0PuWc8GyBpepfjysWkXukQ/videos" text="YouTube" icon="brands/youtube.png" description="見る専" />
 				</div>
 			</section>
-			<section>
-				<h2>Hobby</h2>
-				<div class="IconCardWrapper">
-					<IconCard href="https://fujifilm-x.com/ja-jp/" text="カメラ" emoji="📷" description="FUJIFILM X-S20" />
-					<IconCard href="https://www.yamaha-motor.co.jp/" text="バイク" emoji="🏍" description="WR250R" />
-				</div>
-			</section>
-			<section>
-				<h2>Favorite</h2>
-				<div class="IconCardWrapper">
-					<IconCard href="https://photos.app.goo.gl/5UwNQpwia8HHuQdz7" text="猫" emoji="🐱" description="吸って体力倍増" />
-					<IconCard href="https://www.inoriminase.com/" text="水瀬いのり" emoji="🍀" description="透き通る歌声" />
-					<IconCard href="https://gochiusa.com/" text="ごちうさ" emoji="🐰" description="きらら好き" />
-					<IconCard href="https://www.lovelive-anime.jp/" text="ラブライブ" icon="brands/lovelive.png" description="人生のバイブル" />
-				</div>
-			</section>
-			<section>
-				<h2>Music</h2>
-				<iframe class="MusicPlayer" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/tsum-ug/pl.u-8DY9CoxyyXm0"></iframe>			</section>
 		</main>
 	</body>
 </html>
