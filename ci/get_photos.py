@@ -14,7 +14,7 @@ load_dotenv()
 
 def load_credentials():
     """既存のトークンをロード"""
-    creds = Credentials.from_authorized_user_file('./token.json', SCOPES)
+    creds = Credentials.from_authorized_user_file('ci/token.json', SCOPES)
     if not creds or not creds.valid:
         raise Exception("token.json が無効です。再認証してください。")
     return creds
@@ -52,7 +52,7 @@ def get_album_photos(album_id, creds):
 
     return all_photos
 
-def save_photos_to_json(photo_data, output_file='../src/data/photos.json'):
+def save_photos_to_json(photo_data, output_file='src/data/photos.json'):
     """写真データをJSON形式で保存"""
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(photo_data, f, ensure_ascii=False, indent=4)
