@@ -1,1 +1,1 @@
-sh run-pre-push.sh
+sh ci/run-pre-push.sh
