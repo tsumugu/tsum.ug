@@ -14,7 +14,7 @@ load_dotenv()
 
 def load_credentials():
     """既存のトークンをロード"""
-    creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    creds = Credentials.from_authorized_user_file('./token.json', SCOPES)
     if not creds or not creds.valid:
         raise Exception("token.json が無効です。再認証してください。")
     return creds
