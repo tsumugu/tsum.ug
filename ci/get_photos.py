@@ -2,9 +2,12 @@ import json
 import os
 from google.oauth2.credentials import Credentials
 import requests
+from dotenv import load_dotenv
 
 # スコープは事前に設定されたものを仮定
 SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly']
+
+load_dotenv()
 
 def load_credentials():
     """既存のトークンをロード"""
