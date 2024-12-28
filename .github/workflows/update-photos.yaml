@@ -30,7 +30,7 @@ jobs:
 
       - name: jsonの読み取り
         run: |
-          jq < ci/token.json
+          wc ci/token.json
 
       - name: pipインストール
         run: |
