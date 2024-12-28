@@ -50,7 +50,3 @@ jobs:
             git commit -m "Update photos.json"; \
             git push https://${GITHUB_TOKEN}@github.com/${{ github.repository }} main; \
           fi
-
-      # - name: Cloudflareにパブリッシュ
-      #   run: |
-      #     curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/4706f01c-3a5b-45cc-b797-e33f06936814"
