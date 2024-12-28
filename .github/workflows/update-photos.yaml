@@ -18,9 +18,9 @@ jobs:
 
       - name: JSONトークンを保存
         env:
-          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
+          ENCODED_JSON: ${{ secrets.BASE64_ENCODED_JSON }}
         run: |
-          echo "$TOKEN_JSON" > ci/token.json
+          echo-n $ENCODED_JSON | base64 --decode > ci/token.json
           if [ ! -f "ci/token.json" ]; then \
             echo "Error: ci/token.json does not exist." && exit 1; \
           else \
@@ -40,7 +40,6 @@ jobs:
       - name: スクリプトを実行
         env:
           ALBUM_ID: ${{ secrets.ALBUM_ID }}
-          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
           python3 ci/get_photos.py
 
