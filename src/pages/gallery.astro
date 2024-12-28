@@ -17,21 +17,37 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+3D&display=swap" rel="stylesheet">
     <style type="scss">
-      main {
+      ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
         position: relative;
+        width: 100%;
+        padding-top: 100%;
+        margin-left: 0;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     </style>
   </head>
 	<body>
-    <div class="CatCage">
-      <img class="WalkingCat" src="walkingcat.gif">
-    </div>
-		<main>
+		<ul>
       {photos.map((photo) => (
         <li>
           <img src={photo.url} alt={photo.filename} />
         </li>
       ))}
-		</main>
+		</ul>
 	</body>
 </html>
