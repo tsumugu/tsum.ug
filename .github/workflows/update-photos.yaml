@@ -49,6 +49,7 @@ jobs:
 
       - name: photos.jsonに変更があればpush
         run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           if (git diff --quiet src/data/photos.json); then \
@@ -56,7 +57,7 @@ jobs:
           else \
             git add src/data/photos.json; \
             git commit -m "Update photos.json"; \
-            git push https://${{ secrets.M_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${GITHUB_REF}; \
+            git push origin HEAD:${GITHUB_REF}; \
           fi
 
       - name: Cloudflareにパブリッシュ
