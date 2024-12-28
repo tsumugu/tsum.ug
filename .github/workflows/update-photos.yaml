@@ -20,12 +20,14 @@ jobs:
         env:
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
+          echo "$TOKEN_JSON"
           echo "$TOKEN_JSON" | jq . > ci/token.json
           if [ ! -f "ci/token.json" ]; then \
             echo "Error: ci/token.json does not exist." && exit 1; \
           else \
             echo "Token saved to ci/token.json"; \
           fi
+          chmod 777 ci/token.json
 
       - name: pipインストール
         run: |
@@ -37,7 +39,6 @@ jobs:
           ALBUM_ID: ${{ secrets.ALBUM_ID }}
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
-          ls -l ci
           python3 ci/get_photos.py
 
       - name: photos.jsonに変更があればpush
