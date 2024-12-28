@@ -22,10 +22,9 @@ jobs:
         run: |
           echo "$TOKEN_JSON" | jq . > ci/token.json
           if [ ! -f "ci/token.json" ]; then \
-            echo "Error: ci/token.json does not exist." \
-            exit 1 \
+            echo "Error: ci/token.json does not exist." && exit 1; \
           else \
-            echo "Token saved to ci/token.json" \
+            echo "Token saved to ci/token.json"; \
           fi
 
       - name: pipインストール
