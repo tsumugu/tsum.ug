@@ -8,6 +8,8 @@ on:
 
 jobs:
   run-script:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     env:
       python_ver: "3.9.7"
@@ -49,15 +51,14 @@ jobs:
 
       - name: photos.jsonに変更があればpush
         run: |
-          git remote set-url origin https://github-actions:${{ secrets.M_GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if (git diff --quiet src/data/photos.json); then \
             echo "No changes to photos.json, skipping commit."
           else \
             git add src/data/photos.json; \
             git commit -m "Update photos.json"; \
-            git push origin HEAD:${GITHUB_REF}; \
+            git push https://${GITHUB_TOKEN}@github.com/${github.repository} HEAD${GITHUB_REF}; \
           fi
 
       - name: Cloudflareにパブリッシュ
