@@ -58,7 +58,7 @@ jobs:
           else \
             git add src/data/photos.json; \
             git commit -m "Update photos.json"; \
-            git push https://${GITHUB_TOKEN}@github.com/${github.repository} HEAD${GITHUB_REF}; \
+            git push https://${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD${GITHUB_REF}; \
           fi
 
       - name: Cloudflareにパブリッシュ
