@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 python3 ci/get_photos.py
 
 if git diff --quiet src/data/photos.json; then
