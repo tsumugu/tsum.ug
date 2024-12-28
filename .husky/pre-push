@@ -1,1 +1,1 @@
-sh ci/upload_photosjson.sh
+python3 ci/get_photos.py
