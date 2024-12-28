@@ -37,7 +37,7 @@ jobs:
           ALBUM_ID: ${{ secrets.ALBUM_ID }}
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
-          pwd
+          ls -l ci
           python3 ci/get_photos.py
 
       - name: photos.jsonに変更があればpush
