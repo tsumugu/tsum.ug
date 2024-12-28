@@ -1,3 +1,5 @@
+#!/bin/bash
+
 git reset photos.json
 
 python3 ci/get_photos.py
