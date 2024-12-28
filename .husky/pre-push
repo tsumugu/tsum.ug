@@ -1,4 +1,4 @@
-python3 ci/get_photos.py
+# python3 ci/get_photos.py
 
 if git diff --quiet photos.json; then
   echo "No changes to photos.json, skipping commit."
