@@ -1,0 +1,40 @@
+name: Use token.json in Actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      # コードのチェックアウト
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 必要なPythonパッケージのインストール
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ci/requirements.txt  # 必要なパッケージをインストール
+
+      # 環境変数からtoken.jsonを生成
+      - name: Set up token.json
+        env:
+          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
+        run: |
+          echo "$TOKEN_JSON" > ci/token.json
+          echo "token.json has been created successfully."
+
+      # Pythonスクリプトの実行
+      - name: Run Python script
+        env:
+          ALBUM_ID: ${{ secrets.ALBUM_ID }}
+        run: python ci/get_photos.py
