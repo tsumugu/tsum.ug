@@ -22,6 +22,7 @@ jobs:
         run: |
           echo "$TOKEN_JSON" > ci/token.json
           echo "Token saved to ci/token.json"
+          cat ci/token.json
 
       - name: pipインストール
         run: |
@@ -31,6 +32,7 @@ jobs:
       - name: スクリプトを実行
         env:
           ALBUM_ID: ${{ secrets.ALBUM_ID }}
+          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
           python3 ci/get_photos.py
 
