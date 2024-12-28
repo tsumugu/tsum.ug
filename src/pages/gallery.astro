@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import fs from 'fs';
 import path from 'path';
 
@@ -39,15 +40,64 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
           object-fit: cover;
         }
       }
+      .fullscreen-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 32px;
+      }
+
+      #fullscreen-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     </style>
+    <ViewTransitions />
   </head>
 	<body>
 		<ul>
       {photos.map((photo) => (
         <li>
-          <img src={photo.url} alt={photo.filename} />
+          <img src={photo.url} alt={photo.filename} class="grid-item" />
         </li>
       ))}
 		</ul>
+    <div class="fullscreen-overlay">
+      <img id="fullscreen-image" src="" alt="Fullscreen Image" />
+    </div>
+    <script>
+      const gridItems = document.querySelectorAll('.grid-item');
+      const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
+      const fullscreenImage = document.querySelector('#fullscreen-image');
+
+      // 画像をクリックしたときに全画面表示にする
+      gridItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+          const imgSrc = event.target.src;
+          fullscreenImage.src = imgSrc; // クリックした画像のsrcを全画面用にセット
+          
+          // View Transitions APIを使用して画像を全画面表示に遷移させる
+          document.startViewTransition(() => {
+            fullscreenOverlay.style.display = 'flex'; // オーバーレイを表示
+          });
+        });
+      });
+
+      // オーバーレイをクリックしたときに閉じる
+      fullscreenOverlay.addEventListener('click', () => {
+        // View Transitions APIを使用して遷移を戻す
+        document.startViewTransition(() => {
+          fullscreenOverlay.style.display = 'none'; // オーバーレイを非表示に
+        });
+      });
+    </script>
 	</body>
 </html>

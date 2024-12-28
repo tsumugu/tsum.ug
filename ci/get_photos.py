@@ -38,7 +38,7 @@ def get_album_photos(album_id, creds):
         items = data.get('mediaItems', [])
         for item in items:
             # Base URL とファイル名を取得
-            base_url = item.get('baseUrl')
+            base_url = item.get('baseUrl') + "=d"
             filename = item.get('filename')
             print(f"Photo: {filename}, URL: {base_url}")
             all_photos.append({'filename': filename, 'url': base_url})
