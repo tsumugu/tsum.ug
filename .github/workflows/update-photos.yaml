@@ -29,7 +29,10 @@ jobs:
           chmod 777 ci/token.json
 
       - name: jsonの読み取り
+        env:
+          ENCODED_JSON: ${{ secrets.BASE64_ENCODED_JSON }}
         run: |
+          echo -n $ENCODED_JSON
           wc ci/token.json
 
       - name: pipインストール
