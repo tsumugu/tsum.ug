@@ -20,9 +20,8 @@ jobs:
         env:
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
-          echo "$TOKEN_JSON" > ci/token.json
+          echo "$TOKEN_JSON" | jq . > ci/token.json
           echo "Token saved to ci/token.json"
-          cat ci/token.json
 
       - name: pipインストール
         run: |
