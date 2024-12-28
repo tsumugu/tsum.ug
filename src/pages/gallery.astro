@@ -59,6 +59,21 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
         height: 100%;
         object-fit: contain;
       }
+
+      .image-loading-anim {
+        background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+        background-size: 200% 100%;
+        animation: placeholder-loading 1.5s infinite;
+      }
+
+      @keyframes placeholder-loading {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
     </style>
     <ViewTransitions />
   </head>
@@ -66,20 +81,24 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 		<ul>
       {photos.map((photo) => (
         <li>
-          <img src={photo.url} alt={photo.filename} class="grid-item" />
+          <img src={photo.url} alt={photo.filename} class="grid-item" loading="lazy" />
         </li>
       ))}
 		</ul>
     <div class="fullscreen-overlay">
+      <div id="fullscreen-loader"></div>
       <img id="fullscreen-image" src="" alt="Fullscreen Image" />
     </div>
     <script>
       const gridItems = document.querySelectorAll('.grid-item');
       const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
+      const fullscreenLoader = document.querySelector('#fullscreen-loader');
       const fullscreenImage = document.querySelector('#fullscreen-image');
 
       gridItems.forEach(item => {
         item.addEventListener('click', (event) => {
+          fullscreenLoader.style.display = 'block';
+          fullscreenImage.style.display = 'none';
           const imgSrc = event.target.src;
           fullscreenImage.src = imgSrc + "=d"; // =dをつけると高解像度になる
           document.startViewTransition(() => {
@@ -97,10 +116,18 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       fullscreenOverlay.addEventListener('click', () => {
         closeFullscreen()
       });
+
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           closeFullscreen();
         }
+      });
+
+      window.addEventListener("load", () => {
+        fullscreenImage.addEventListener("load", () => {
+          fullscreenLoader.style.display = 'none';
+          fullscreenImage.style.display = 'block';
+        });
       });
     </script>
 	</body>

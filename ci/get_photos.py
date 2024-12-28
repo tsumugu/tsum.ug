@@ -4,6 +4,7 @@ sys.path.insert(0, "./lib")
 import json
 import os
 from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
 import requests
 from dotenv import load_dotenv
 
@@ -13,10 +14,22 @@ SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly']
 load_dotenv()
 
 def load_credentials():
-    """既存のトークンをロード"""
-    creds = Credentials.from_authorized_user_file('ci/token.json', SCOPES)
+    """既存のトークンをロードし、必要ならリフレッシュ"""
+    creds = None
+    if os.path.exists('ci/token.json'):
+        creds = Credentials.from_authorized_user_file('ci/token.json', SCOPES)
+
     if not creds or not creds.valid:
-        raise Exception("token.json が無効です。再認証してください。")
+        if creds and creds.expired and creds.refresh_token:
+            print("トークンが期限切れです。リフレッシュ中...")
+            creds.refresh(Request())
+        else:
+            raise Exception("token.json が無効です。再認証が必要です。")
+    
+        # 更新されたトークンを保存
+        with open('ci/token.json', 'w') as token_file:
+            token_file.write(creds.to_json())
+            print("リフレッシュ済みのトークンを保存しました。")
     return creds
 
 def get_album_photos(album_id, creds):
