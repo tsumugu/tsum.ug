@@ -78,25 +78,29 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
       const fullscreenImage = document.querySelector('#fullscreen-image');
 
-      // 画像をクリックしたときに全画面表示にする
       gridItems.forEach(item => {
         item.addEventListener('click', (event) => {
           const imgSrc = event.target.src;
-          fullscreenImage.src = imgSrc; // クリックした画像のsrcを全画面用にセット
-          
-          // View Transitions APIを使用して画像を全画面表示に遷移させる
+          fullscreenImage.src = imgSrc + "=d"; // =dをつけると高解像度になる
           document.startViewTransition(() => {
-            fullscreenOverlay.style.display = 'flex'; // オーバーレイを表示
+            fullscreenOverlay.style.display = 'flex';
           });
         });
       });
 
-      // オーバーレイをクリックしたときに閉じる
-      fullscreenOverlay.addEventListener('click', () => {
-        // View Transitions APIを使用して遷移を戻す
+      function closeFullscreen() {
         document.startViewTransition(() => {
-          fullscreenOverlay.style.display = 'none'; // オーバーレイを非表示に
+          fullscreenOverlay.style.display = 'none';
         });
+      }
+
+      fullscreenOverlay.addEventListener('click', () => {
+        closeFullscreen()
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeFullscreen();
+        }
       });
     </script>
 	</body>
