@@ -8,6 +8,8 @@ else
   git add src/data/photos.json
   git commit -m "Update photos.json"
   git push origin head
+  git fetch
+  git merge
 fi
 
 exit 0
