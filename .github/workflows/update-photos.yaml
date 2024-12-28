@@ -1,0 +1,54 @@
+name: Run Update photos.json
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    env:
+      python_ver: "3.9.7"
+
+    steps:
+      - name: チェックアウトリポジトリ
+        uses: actions/checkout@v3
+
+      - name: JSONトークンを保存
+        env:
+          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
+        run: |
+          echo "$TOKEN_JSON" > ci/token.json
+          echo "Token saved to ci/token.json"
+
+      - name: pipインストール
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r ci/requirements.txt -t ./lib
+
+      - name: スクリプトを実行
+        env:
+          ALBUM_ID: ${{ secrets.ALBUM_ID }}
+        run: |
+          python3 ci/get_photos.py
+
+      - name: photos.jsonに変更があればpush
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          if (git diff --quiet src/data/photos.json); then \
+            echo "No changes to photos.json, skipping commit."
+          else \
+            git add src/data/photos.json; \
+            git commit -m "Update photos.json"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cloudflareにパブリッシュ
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/4706f01c-3a5b-45cc-b797-e33f06936814"
