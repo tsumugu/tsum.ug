@@ -20,7 +20,7 @@ jobs:
         env:
           ENCODED_JSON: ${{ secrets.BASE64_ENCODED_JSON }}
         run: |
-          echo-n $ENCODED_JSON | base64 --decode > ci/token.json
+          echo -n $ENCODED_JSON | base64 --decode > ci/token.json
           if [ ! -f "ci/token.json" ]; then \
             echo "Error: ci/token.json does not exist." && exit 1; \
           else \
