@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     env:
       python_ver: "3.9.7"
-
+    environment:
+      name: main
     steps:
       - name: チェックアウトリポジトリ
         uses: actions/checkout@v3
 
       - name: JSONトークンを保存
         env:
-          ENCODED_JSON: "aaaaaaaaaaaaaaaaaaaa"
+          ENCODED_JSON: "${{ secrets.BASE64_ENCODED_JSON }}"
         run: |
-          # echo -n $ENCODED_JSON | base64 --decode > ci/token.json
-          echo -n $ENCODED_JSON > ci/token.json
+          echo -n $ENCODED_JSON | base64 --decode > ci/token.json
           if [ ! -f "ci/token.json" ]; then \
             echo "Error: ci/token.json does not exist." && exit 1; \
           else \
