@@ -9,7 +9,7 @@ import requests
 from dotenv import load_dotenv
 
 # スコープは事前に設定されたものを仮定
-SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly']
+SCOPES = ['https://www.googleapis.com/auth/photoslibrary']
 
 load_dotenv()
 
