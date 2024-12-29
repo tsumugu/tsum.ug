@@ -65,7 +65,7 @@ def get_album_photos(album_id, creds):
 
     return all_photos
 
-def save_photos_to_json(photo_data, output_file='src/data/photos.json'):
+def save_photos_to_json(photo_data, output_file='src/data/google_photos.json'):
     """写真データをJSON形式で保存"""
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(photo_data, f, ensure_ascii=False, indent=4)

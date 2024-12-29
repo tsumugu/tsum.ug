@@ -36,8 +36,10 @@ jobs:
       - name: スクリプトを実行
         env:
           ALBUM_ID: ${{ secrets.ALBUM_ID }}
+          UPLOAD_KEY: ${{ secrets.UPLOAD_KEY }}
         run: |
           python3 ci/get_photos.py
+          python3 ci/upload_s3.py
 
       - name: photos.jsonに変更があればpush
         run: |
