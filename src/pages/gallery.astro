@@ -1,4 +1,6 @@
 ---
+import "../styles/_vars.scss"
+
 import { ViewTransitions } from 'astro:transitions';
 import fs from 'fs';
 import path from 'path';
@@ -18,12 +20,21 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+3D&display=swap" rel="stylesheet">
     <style type="scss">
+      body {
+        color: var(--text-color);
+        background-color: var(--bg-color);
+      }
+      main {
+        margin: 3rem;
+      }
       ul {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
+        gap: 0.5rem;
         list-style-type: none;
         padding-left: 0;
+
+        margin: 2.5rem 0 3rem 0;
       }
 
       li {
@@ -80,17 +91,19 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     <ViewTransitions />
   </head>
 	<body>
-		<ul>
-      {photos.map((photo) => (
-        <li>
-          <img src={photo.thumbnail_url} data-original-src={photo.original_url} alt={photo.filename} class="grid-item" loading="lazy" />
-        </li>
-      ))}
-		</ul>
-    <div class="fullscreen-overlay">
-      <div id="fullscreen-loader"></div>
-      <img id="fullscreen-image" src="" alt="Fullscreen Image" />
-    </div>
+    <main>
+      <ul>
+        {photos.map((photo) => (
+          <li>
+            <img src={photo.thumbnail_url} data-original-src={photo.original_url} alt={photo.filename} class="grid-item" loading="lazy" />
+          </li>
+        ))}
+      </ul>
+      <div class="fullscreen-overlay">
+        <div id="fullscreen-loader"></div>
+        <img id="fullscreen-image" src="" alt="Fullscreen Image" />
+      </div>
+    </main>
     <script>
       const gridItems = document.querySelectorAll('.grid-item');
       const fullscreenOverlay = document.querySelector('.fullscreen-overlay');

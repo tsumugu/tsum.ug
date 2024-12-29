@@ -1,3 +1,5 @@
+@use "_vars.scss";
+
 @mixin bigpc {
   @media (min-width: 1100px) {
     @content;
@@ -19,11 +21,6 @@
   }
 }
 
-:root {
-  --bg-color: #1b1d21;
-  --text-color: #d1d2d3;
-}
-
 html,
 body {
   color: var(--text-color);
@@ -36,7 +33,7 @@ body {
   line-height: 1.5;
 }
 main {
-  margin: 2.5rem 5rem 5rem 5rem;
+  margin: 0.5rem 3rem 3rem 3rem;
 }
 h1 {
   margin: 0.5rem;

@@ -21,9 +21,9 @@ import IconCard from "../components/IconCard.astro"
 				--end-color: #ffffff;
 				--draw-duration: 0.2s; /* 線を描くアニメーションの時間 */
 				--color-change-duration: 0.4s; /* 色の変化アニメーションの時間 */
-				--opening-inner-text-duration: calc(var(--color-change-duration) * 10.5);
-				--opening-inner-duration: calc(var(--color-change-duration) * 15.75);
-				--body-close-duration: calc(var(--opening-inner-duration) + 0.8s);
+				--opening-inner-text-duration: 1.8s;
+				--opening-inner-duration: calc(var(--opening-inner-text-duration) * 1.5);
+				--body-close-duration: calc(var(--opening-inner-duration) + 1s);
 			}
 
 			html, body {
@@ -206,7 +206,7 @@ import IconCard from "../components/IconCard.astro"
 				right: 0;
 				width: 1px;
 				height: 0;
-				animation: drawRight var(--draw-duration) forwards 1s, colorChangeRight var(--color-change-duration) forwards 1s;
+				animation: drawRight var(--draw-duration) forwards 0.25s, colorChangeRight var(--color-change-duration) forwards 0.25s;
 			}
 
 			@keyframes drawRight {
@@ -236,7 +236,7 @@ import IconCard from "../components/IconCard.astro"
 				right: 0;
 				height: 1px;
 				width: 0;
-				animation: drawBottom var(--draw-duration) forwards 2s, colorChangeBottom var(--color-change-duration) forwards 2s;
+				animation: drawBottom var(--draw-duration) forwards 0.5s, colorChangeBottom var(--color-change-duration) forwards 0.5s;
 			}
 
 			@keyframes drawBottom {
@@ -266,7 +266,7 @@ import IconCard from "../components/IconCard.astro"
 				left: 0;
 				width: 1px;
 				height: 0;
-				animation: drawLeft var(--draw-duration) forwards 3s, colorChangeLeft var(--color-change-duration) forwards 3s;
+				animation: drawLeft var(--draw-duration) forwards 1s, colorChangeLeft var(--color-change-duration) forwards 1s;
 			}
 
 			@keyframes drawLeft {
@@ -359,8 +359,8 @@ import IconCard from "../components/IconCard.astro"
 			<section>
 				<h2>Hobby</h2>
 				<div class="IconCardWrapper">
-					<IconCard href="https://tsum.ug/gallery" text="カメラ" emoji="📷" description="FUJIFILM X-S20" />
-					<IconCard href="https://tsum.ug/gallery#DSCF4256.JPG" text="バイク" emoji="🏍" description="WR250R" />
+					<IconCard href="/gallery" text="カメラ" emoji="📷" description="FUJIFILM X-S20" />
+					<IconCard href="/gallery#DSCF4256.JPG" text="バイク" emoji="🏍" description="WR250R" />
 				</div>
 			</section>
 			<section>
