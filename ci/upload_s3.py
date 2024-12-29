@@ -1,9 +1,6 @@
 import json
 import requests
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # 定数定義
 INPUT_FILE = "src/data/google_photos.json"  # 入力JSONファイル
