@@ -99,20 +99,29 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
       gridItems.forEach(item => {
         item.addEventListener('click', (event) => {
-          fullscreenLoader.style.display = 'block';
-          fullscreenImage.style.display = 'none';
           const imgSrc = event.target.dataset.originalSrc;
-          fullscreenImage.src = imgSrc;
-          document.startViewTransition(() => {
-            fullscreenOverlay.style.display = 'flex';
-          });
+          showFullscreenImage(imgSrc);
+
+          const fileName = event.target.alt;
+          history.pushState(null, '', `#${fileName}`);
         });
       });
+
+      function showFullscreenImage(imgSrc) {
+        fullscreenLoader.style.display = 'block';
+        fullscreenImage.style.display = 'none';
+        fullscreenImage.src = imgSrc;
+
+        document.startViewTransition(() => {
+          fullscreenOverlay.style.display = 'flex';
+        });
+      }
 
       function closeFullscreen() {
         document.startViewTransition(() => {
           fullscreenOverlay.style.display = 'none';
         });
+        history.pushState(null, '', window.location.pathname);
       }
 
       fullscreenOverlay.addEventListener('click', () => {
@@ -126,6 +135,15 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       });
 
       window.addEventListener("load", () => {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+          const targetItem = Array.from(gridItems).find(item => item.alt === decodeURI(hash));
+          if (targetItem) {
+            const imgSrc = targetItem.dataset.originalSrc;
+            showFullscreenImage(imgSrc);
+          }
+        }
+
         fullscreenImage.addEventListener("load", () => {
           fullscreenLoader.style.display = 'none';
           fullscreenImage.style.display = 'block';
