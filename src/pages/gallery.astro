@@ -83,7 +83,7 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 		<ul>
       {photos.map((photo) => (
         <li>
-          <img src={photo.url} alt={photo.filename} class="grid-item" loading="lazy" />
+          <img src={photo.thumbnail_url} data-original-src={photo.original_url} alt={photo.filename} class="grid-item" loading="lazy" />
         </li>
       ))}
 		</ul>
@@ -101,8 +101,8 @@ const photos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
         item.addEventListener('click', (event) => {
           fullscreenLoader.style.display = 'block';
           fullscreenImage.style.display = 'none';
-          const imgSrc = event.target.src;
-          fullscreenImage.src = imgSrc + "=d"; // =dをつけると高解像度になる
+          const imgSrc = event.target.dataset.originalSrc;
+          fullscreenImage.src = imgSrc;
           document.startViewTransition(() => {
             fullscreenOverlay.style.display = 'flex';
           });
