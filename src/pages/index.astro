@@ -13,9 +13,25 @@ import NameCard from "../components/NameCard.jsx"
 		<title>tsum.ug</title>
 		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Space+Mono&amp;display=swap" rel="stylesheet">
 		<style type="scss">
-			.pageHeader {
-				text-align: center;
+			section {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				div {
+					display: flex;
+					flex-direction: row;
+					gap: 2rem;
+					.iconcard {
+						flex-direction: column;
+						gap: 0.25rem;
+					}
+				}
 			}
+			
+			// .pageHeader {
+			// 	text-align: center;
+			// }
 			.IconCardWrapper {
 				display: flex;
 				flex-wrap : wrap;
@@ -29,6 +45,10 @@ import NameCard from "../components/NameCard.jsx"
 
 			.NameCardWrapper:hover {
 				cursor: grabbing;
+			}
+
+			.namecardH2 {
+				margin-bottom: -0.2rem;
 			}
 
 			/* sp, tablet */
@@ -56,7 +76,7 @@ import NameCard from "../components/NameCard.jsx"
 				</div>
 			</section>
 			<section>
-				<h2>NameCard</h2>
+				<h2 class="namecardH2">NameCard</h2>
 				<NameCard client:only="react" />
 			</section>
 			<section>

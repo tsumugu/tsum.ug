@@ -40,12 +40,16 @@ const NameCard = () => {
     const card = new THREE.Mesh(geometry, materials);
     scene.add(card);
     
-    camera.position.z = 10; // 初期位置を遠くに設定
+    // カメラの位置を設定
+    camera.position.set(0, 0, 5); // カメラを中央に配置
+    // カメラの視点を設定
+    camera.lookAt(new THREE.Vector3(0, 0, 0)); // カメラの視点をカードの中心に設定
+    
     function animate() {
       requestAnimationFrame(animate);
       
       // カメラのズームインアニメーション
-      if (camera.position.z > 1.8) {
+      if (camera.position.z > 1.5) {
         camera.position.z -= 0.1;
       }
       
@@ -54,13 +58,23 @@ const NameCard = () => {
     }
     
     animate();
-    
+
+    // リサイズイベントのリスナーを追加
+    const handleResize = () => {
+      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(mount.clientWidth, mount.clientHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       mount.removeChild(renderer.domElement);
     };
   }, []);
   
-  return <div className='NameCardWrapper' ref={mountRef} style={{ width: '50%', aspectRatio: '3 / 2', cursor: 'grab' }} />;
+  return <div className='NameCardWrapper' ref={mountRef} style={{ width: '50%', height: 'auto', aspectRatio: '3 / 2', cursor: 'grab' }} />;
 };
 
 export default NameCard;
