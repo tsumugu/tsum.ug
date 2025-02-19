@@ -74,15 +74,15 @@ import NameCard from "../components/NameCard.jsx"
 	<body>
 		<main>
 			<section>
+				<h2 class="namecardH2">NameCard</h2>
+				<NameCard client:only="react" />
+			</section>
+			<section>
 				<h2>Hobby</h2>
 				<div class="IconCardWrapper">
 					<IconCard href="/gallery" text="カメラ" emoji="📷" description="FUJIFILM X-S20" />
 					<IconCard href="/gallery#DSCF4256.JPG" text="バイク" emoji="🏍" description="WR250R" />
 				</div>
-			</section>
-			<section>
-				<h2 class="namecardH2">NameCard</h2>
-				<NameCard client:only="react" />
 			</section>
 			<section>
 				<h2>Favorite</h2>
