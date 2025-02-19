@@ -1,6 +1,7 @@
 ---
 import "../styles/_global.scss"
 import IconCard from "../components/IconCard.astro"
+import NameCard from "../components/NameCard.jsx"
 ---
 
 <html lang="ja">
@@ -12,285 +13,6 @@ import IconCard from "../components/IconCard.astro"
 		<title>tsum.ug</title>
 		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Space+Mono&amp;display=swap" rel="stylesheet">
 		<style type="scss">
-			/* Opening Anim Start */
-			:root {
-				--opening-bg-color: #000000;
-				--margin-size: 2rem;
-				--start-color: var(--opening-bg-color);
-				--mid-color: yellow;
-				--end-color: #ffffff;
-				--draw-duration: 0.2s; /* 線を描くアニメーションの時間 */
-				--color-change-duration: 0.4s; /* 色の変化アニメーションの時間 */
-				--opening-inner-text-duration: 1.8s;
-				--opening-inner-duration: calc(var(--opening-inner-text-duration) * 1.5);
-				--body-close-duration: calc(var(--opening-inner-duration) + 1s);
-			}
-
-			html, body {
-				animation: closeAnimBody var(--body-close-duration) forwards;
-			}
-
-			@keyframes closeAnimBody {
-				0% {
-					overflow: hidden;
-				}
-				99% {
-					overflow: hidden;
-				}
-				100% {
-					overflow: auto;
-				}
-			}
-
-			.opening {
-				width: 100%;
-				height: 100%;
-				background-color: var(--opening-bg-color);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				animation: closeAnimOpening var(--body-close-duration) forwards;
-			}
-
-			@keyframes closeAnimOpening {
-				0% {
-					display: flex;
-				}
-				90% {
-					opacity: 1;
-				}
-				99% {
-					display: flex;
-				}
-				100% {
-					display: none;
-					opacity: 0;
-				}
-			}
-
-			.opening-border, .opening-inner {
-				width: calc(100% - var(--margin-size) * 2);
-				max-width: 1200px;
-				height: calc(100% - var(--margin-size) * 2);
-				max-height: 1200px;
-				margin: var(--margin-size);
-			}
-
-			.opening-border {
-				position: relative;
-			}
-
-			.opening-inner {
-				position: absolute;
-				animation: openingInnerBg var(--opening-inner-duration) forwards;
-			}
-
-			@keyframes openingInnerBg {
-				0% {
-					background-color: var(--opening-bg-color);
-				}
-				50% {
-					background-color: var(--opening-bg-color);
-					width: 0;
-					height: 0;
-				}
-				100% {
-					background-color: var(--bg-color);
-					width: 100%;
-					height: 100%;
-				}
-			}
-
-			.opening-inner-text, .opening-inner-text-name-wrapper {
-				color: var(--text-color);
-				font-size: 2.5rem;
-				font-family: "Space Mono", monospace;
-				font-weight: 400;
-				font-style: normal;
-				white-space: nowrap;
-				animation: openingInnerText var(--opening-inner-text-duration) forwards;
-			}
-			@keyframes openingInnerText {
-				0% {
-					opacity: 0;
-				}
-				85% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-
-			.opening-inner-text.hello {
-				position: absolute;
-				top: calc(var(--margin-size) * 6);
-				left: calc(var(--margin-size) * 6);
-			}
-
-			.opening-inner-text.im {
-				position: absolute;
-				bottom: calc(var(--margin-size) * 6);
-				right: calc(var(--margin-size) * 6);
-			}
-
-			.opening-inner-text-name-wrapper {
-				font-family: "M PLUS 1p", sans-serif;
-				display: grid;
-    		grid-template-columns: 64px 1fr;
-				gap: 2rem;
-				justify-items: center;
-				align-items: center;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
-
-			.opening-inner-text-name-wrapper img {
-				width: 64px;
-				height: 64px;
-				border-radius: 50%;
-			}
-
-			.tsumugu {
-				font-size: 2rem;
-				margin: 0 0 0.5rem 0;
-				padding: 0;
-			}
-
-			.desc {
-				font-size: 1.5rem;
-				margin: 0;
-				padding: 0;
-			}
-
-			.opening-border div {
-				position: absolute;
-				background-color: var(--start-color);
-			}
-
-			/* 上辺 */
-			.opening-border .top {
-				top: 0;
-				left: 0;
-				height: 1px;
-				width: 0;
-				animation: drawTop var(--draw-duration) forwards, colorChangeTop var(--color-change-duration) forwards;
-			}
-
-			@keyframes drawTop {
-				0% {
-					width: 0;
-				}
-				100% {
-					width: 100%;
-				}
-			}
-
-			@keyframes colorChangeTop {
-				0% {
-					background-color: var(--start-color);
-				}
-				50% {
-					background-color: var(--mid-color);
-				}
-				100% {
-					background-color: var(--end-color);
-				}
-			}
-
-			/* 右辺 */
-			.opening-border .right {
-				top: 0;
-				right: 0;
-				width: 1px;
-				height: 0;
-				animation: drawRight var(--draw-duration) forwards 0.25s, colorChangeRight var(--color-change-duration) forwards 0.25s;
-			}
-
-			@keyframes drawRight {
-				0% {
-					height: 0;
-				}
-				100% {
-					height: 100%;
-				}
-			}
-
-			@keyframes colorChangeRight {
-				0% {
-					background-color: var(--start-color);
-				}
-				50% {
-					background-color: var(--mid-color);
-				}
-				100% {
-					background-color: var(--end-color);
-				}
-			}
-
-			/* 下辺 */
-			.opening-border .bottom {
-				bottom: 0;
-				right: 0;
-				height: 1px;
-				width: 0;
-				animation: drawBottom var(--draw-duration) forwards 0.5s, colorChangeBottom var(--color-change-duration) forwards 0.5s;
-			}
-
-			@keyframes drawBottom {
-				0% {
-					width: 0;
-				}
-				100% {
-					width: 100%;
-				}
-			}
-
-			@keyframes colorChangeBottom {
-				0% {
-					background-color: var(--start-color);
-				}
-				50% {
-					background-color: var(--mid-color);
-				}
-				100% {
-					background-color: var(--end-color);
-				}
-			}
-
-			/* 左辺 */
-			.opening-border .left {
-				bottom: 0;
-				left: 0;
-				width: 1px;
-				height: 0;
-				animation: drawLeft var(--draw-duration) forwards 1s, colorChangeLeft var(--color-change-duration) forwards 1s;
-			}
-
-			@keyframes drawLeft {
-				0% {
-					height: 0;
-				}
-				100% {
-					height: 100%;
-				}
-			}
-
-			@keyframes colorChangeLeft {
-				0% {
-					background-color: var(--start-color);
-				}
-				50% {
-					background-color: var(--mid-color);
-				}
-				100% {
-					background-color: var(--end-color);
-				}
-			}
-
-			/* Opening Anim End */
 			.pageHeader {
 				text-align: center;
 			}
@@ -304,6 +26,11 @@ import IconCard from "../components/IconCard.astro"
 				margin-top: 2rem;
 				max-width: 1100px !important;
 			}
+
+			.NameCardWrapper:hover {
+				cursor: grabbing;
+			}
+
 			/* sp, tablet */
 			@media (max-width: 900px) {
 				main, section, .IconCardWrapper, .NameCardWrapper, .AboutMeInner {
@@ -311,22 +38,6 @@ import IconCard from "../components/IconCard.astro"
 					flex-flow: column;
 					justify-content: center;
 					align-items: center;
-				}
-
-				.opening-inner-text, .opening-inner-text-name-wrapper {
-					font-size: 2rem;
-				}
-
-				.opening-inner-text.hello {
-					position: absolute;
-					top: calc(50% - 8rem);
-					left: calc(50% - 8rem);
-				}
-				
-				.opening-inner-text.im {
-					position: absolute;
-					bottom: calc(50% - 8rem);
-					right: calc(50% - 8.5rem);
 				}
 				
 				.MusicPlayer {
@@ -336,25 +47,6 @@ import IconCard from "../components/IconCard.astro"
 		</style>
 	</head>
 	<body>
-		<div class="opening">
-			<div class="opening-inner">
-				<div class="opening-inner-text hello">Hello,</div>
-				<div class="opening-inner-text-name-wrapper">
-					<img src="icon.png" class="icon">
-					<div>
-						<p class="tsumugu">つむぐ</p>
-						<p class="desc">@tsumugu1515</p>
-					</div>
-				</div>
-				<div class="opening-inner-text im">I'm tsum.ug</div>
-			</div>
-			<div class="opening-border">
-				<div class="top"></div>
-				<div class="right"></div>
-				<div class="bottom"></div>
-				<div class="left"></div>
-			</div>
-		</div>
 		<main>
 			<section>
 				<h2>Hobby</h2>
@@ -362,6 +54,10 @@ import IconCard from "../components/IconCard.astro"
 					<IconCard href="/gallery" text="カメラ" emoji="📷" description="FUJIFILM X-S20" />
 					<IconCard href="/gallery#DSCF4256.JPG" text="バイク" emoji="🏍" description="WR250R" />
 				</div>
+			</section>
+			<section>
+				<h2>NameCard</h2>
+				<NameCard client:only="react" />
 			</section>
 			<section>
 				<h2>Favorite</h2>
