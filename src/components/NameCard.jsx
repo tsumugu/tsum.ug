@@ -51,8 +51,8 @@ const NameCard = () => {
     controls.enableZoom = true;
     
     const textureLoader = new THREE.TextureLoader();
-    const frontTexture = textureLoader.load('/public/namecard/meishi_tsumugu1515_omote.png');
-    const backTexture = textureLoader.load('/public/namecard/meishi_tsumugu1515_ura.png');
+    const frontTexture = textureLoader.load('/namecard/meishi_tsumugu1515_omote.png');
+    const backTexture = textureLoader.load('/namecard/meishi_tsumugu1515_ura.png');
     
     frontTexture.encoding = THREE.sRGBEncoding;
     backTexture.encoding = THREE.sRGBEncoding;
