@@ -43,6 +43,11 @@ import NameCard from "../components/NameCard.jsx"
 				max-width: 1100px !important;
 			}
 
+			.NameCardWrapper {
+				flex-direction: column;
+				align-items: center;
+			}
+
 			.NameCardWrapper:hover {
 				cursor: grabbing;
 			}
@@ -53,7 +58,7 @@ import NameCard from "../components/NameCard.jsx"
 
 			/* sp, tablet */
 			@media (max-width: 900px) {
-				main, section, .IconCardWrapper, .NameCardWrapper, .AboutMeInner {
+				section, .IconCardWrapper, .AboutMeInner {
 					display: flex;
 					flex-flow: column;
 					justify-content: center;

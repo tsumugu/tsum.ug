@@ -1,12 +1,42 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const NameCard = () => {
   const mountRef = useRef(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const resizeTimeoutRef = useRef(null);
 
   useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+      resizeTimeoutRef.current = setTimeout(() => {
+        initScene();
+      }, 100); // 100msのディレイを追加
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const initScene = () => {
     const mount = mountRef.current;
+    if (!mount) return;
+
+    // 既存のシーンをクリア
+    while (mount.firstChild) {
+      mount.removeChild(mount.firstChild);
+    }
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, mount.clientWidth / mount.clientHeight, 0.1, 1000);
     
@@ -58,23 +88,20 @@ const NameCard = () => {
     }
     
     animate();
+  };
 
-    // リサイズイベントのリスナーを追加
-    const handleResize = () => {
-      camera.aspect = mount.clientWidth / mount.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(mount.clientWidth, mount.clientHeight);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      mount.removeChild(renderer.domElement);
-    };
+  useEffect(() => {
+    initScene();
   }, []);
+
+  const wrapperStyle = {
+    width: windowWidth <= 900 ? '100%' : '70%',
+    height: 'auto',
+    aspectRatio: '3 / 2',
+    cursor: 'grab'
+  };
   
-  return <div className='NameCardWrapper' ref={mountRef} style={{ width: '50%', height: 'auto', aspectRatio: '3 / 2', cursor: 'grab' }} />;
+  return <div className='NameCardWrapper' ref={mountRef} style={wrapperStyle} />;
 };
 
 export default NameCard;
